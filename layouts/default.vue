@@ -12,6 +12,6 @@
 
 <style lang="postcss">
 .layout-default {
-  @apply flex flex-col justify-start items-stretch;
+  @apply flex flex-col justify-start items-stretch bg-gray-900 min-h-screen;
 }
 </style>

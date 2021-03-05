@@ -99,13 +99,13 @@ export default {
   @apply flex flex-row justify-center items-center;
 }
 .the-header > .logo > .button.menu {
-  @apply inline-block md:hidden;
+  @apply inline-block sm:hidden;
 }
 .the-header > .link {
   @apply flex flex-row justify-start items-center space-x-2;
 }
 .the-header > .link.navi {
-  @apply hidden md:flex;
+  @apply hidden sm:flex;
 }
 .the-header > .link > .button {
   @apply flex flex-col justify-center items-center p-2;
@@ -136,6 +136,6 @@ export default {
 }
 .the-header > .user > .button.app,
 .the-header > .user > .button.user {
-  @apply hidden md:flex;
+  @apply hidden sm:flex;
 }
 </style>

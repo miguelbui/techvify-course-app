@@ -9,6 +9,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      screens: {
+        sm: '601px',
+      },
       fontFamily: {
         sans: ['Noto Sans JP'],
       },

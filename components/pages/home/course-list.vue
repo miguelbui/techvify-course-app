@@ -32,7 +32,11 @@ export default {
     }
   },
   computed: {
-    ...mapGetters({ search: 'search', filter: 'course/filter' }),
+    ...mapGetters({
+      search: 'search',
+      filter: 'course/filter',
+      filterType: 'course/filterType',
+    }),
     filtedCourses() {
       try {
         let filtedItems = this.filterCourses(this.courses)
@@ -46,7 +50,7 @@ export default {
       return this.filtedCourses?.length || 0
     },
     sortByText() {
-      return this.filter?.type === filterType.POPULARITY
+      return this.filterType === filterType.POPULARITY.value
         ? `Sort by most popular`
         : 'Sort by newest'
     },
@@ -61,7 +65,7 @@ export default {
     },
     sortCourses(courses) {
       const sortFunc =
-        this.filter?.type === filterType?.POPULARITY
+        this.filterType === filterType.POPULARITY.value
           ? this.sortByField('numOfRates')
           : this.sortByDate('publishedDate')
       return courses.sort(sortFunc)

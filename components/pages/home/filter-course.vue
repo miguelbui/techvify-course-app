@@ -30,7 +30,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions({ setFilter: 'course/setFilter' }),
+    ...mapActions({ setFilter: 'course/setFilter', setSearch: 'setSearch' }),
     updateTypeFilter(payload) {
       const filterItem = {
         props: 'type',
@@ -41,6 +41,7 @@ export default {
     resetFilter() {
       this.filter.type = null
       this.updateTypeFilter(null)
+      this.setSearch(null)
     },
   },
 }

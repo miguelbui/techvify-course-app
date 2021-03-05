@@ -19,7 +19,13 @@
     <div class="search">
       <div class="form">
         <icon-search class="icon"></icon-search>
-        <input type="text" class="input" placeholder="Search..." />
+        <input
+          v-model="model.search"
+          type="text"
+          class="input"
+          placeholder="Search..."
+          @keyup.enter="submitSearch"
+        />
       </div>
     </div>
     <div class="link navi">
@@ -55,8 +61,30 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
   name: 'LayoutTheHeader',
+  data() {
+    return {
+      model: {
+        search: null,
+      },
+    }
+  },
+  computed: {
+    ...mapGetters({ search: 'search' }),
+  },
+  watch: {
+    search(newValue) {
+      this.model.search = newValue
+    },
+  },
+  methods: {
+    ...mapActions({ setSearch: 'setSearch' }),
+    submitSearch() {
+      this.setSearch(this.model.search)
+    },
+  },
 }
 </script>
 

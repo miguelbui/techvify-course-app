@@ -79,6 +79,9 @@ export default {
       this.model.search = newValue
     },
   },
+  mounted() {
+    this.model.search = this.search
+  },
   methods: {
     ...mapActions({ setSearch: 'setSearch' }),
     submitSearch() {

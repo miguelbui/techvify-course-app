@@ -1,8 +1,11 @@
 <template>
   <div class="home-course-list">
+    <div class="category">
+      <h2 class="name">Software development</h2>
+    </div>
     <div class="sumary">
-      <strong class="total">1.195 Results</strong>
-      <span class="sortby"> - Sorted by most popular</span>
+      <strong class="total">{{ filtedCourseQuantity }} Results</strong>
+      <span class="sortby"> - {{ sortByText }}</span>
     </div>
     <div class="items">
       <div
@@ -98,6 +101,14 @@ export default {
         return []
       }
     },
+    filtedCourseQuantity() {
+      return this.filtedCourses?.length || 0
+    },
+    sortByText() {
+      return this.filter?.type === filterType.POPULARITY
+        ? `Sort by most popular`
+        : 'Sort by newest'
+    },
   },
   methods: {
     filterCourses(courses) {
@@ -133,8 +144,14 @@ export default {
 .home-course-list {
   @apply flex flex-col justify-start items-stretch space-y-2 text-sm text-gray-400 border-t border-b border-gray-700;
 }
+.home-course-list > .category {
+  @apply py-12 border-b border-gray-700 sm:hidden;
+}
+.home-course-list > .category > .name {
+  @apply text-3xl text-white;
+}
 .home-course-list > .sumary {
-  @apply flex flex-row justify-start items-baseline space-x-2 pt-12 pb-3;
+  @apply flex flex-row justify-start items-baseline space-x-2 pt-8 pb-3;
 }
 .home-course-list > .sumary > .total {
   @apply text-xl text-white;

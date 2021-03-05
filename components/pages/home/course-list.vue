@@ -21,73 +21,14 @@
 
 <script>
 import { filterType } from '@/utils/constant'
+import { courses } from '@/mockup/data'
+
 import { mapGetters } from 'vuex'
 export default {
   name: 'HomeCourseList',
   data() {
     return {
-      courses: [
-        {
-          id: 1,
-          courseName: 'React: Getting Started',
-          isPopular: true,
-          isNew: false,
-          authorName: 'Samuel Eto',
-          publishedDate: '2020-06-12',
-          level: 'Beginner',
-          numOfRates: 3.5,
-          score: 3587,
-          courseLength: '9h2m',
-        },
-        {
-          id: 2,
-          courseName: 'Javascript: Getting Started',
-          isPopular: false,
-          isNew: false,
-          authorName: 'Romeo Lukaku',
-          publishedDate: '2021-01-11',
-          level: 'Beginner',
-          numOfRates: 4.5,
-          score: 196,
-          courseLength: '4h2m',
-        },
-        {
-          id: 3,
-          courseName: 'I dont know JS',
-          isPopular: true,
-          isNew: true,
-          authorName: 'Giccwo EtKansaoo',
-          publishedDate: '2020-04-25',
-          level: 'Beginner',
-          numOfRates: 5.0,
-          score: 2101,
-          courseLength: '11h10m',
-        },
-        {
-          id: 4,
-          courseName: 'Design pattern, Javascript',
-          isPopular: false,
-          isNew: false,
-          authorName: 'Tom Ford',
-          publishedDate: '2019-09-14',
-          level: 'Middle',
-          numOfRates: 4.5,
-          score: 1102,
-          courseLength: '12h2m',
-        },
-        {
-          id: 5,
-          courseName: 'My SQL, Relationship Database RSMDC',
-          isPopular: true,
-          isNew: true,
-          authorName: 'Makr Kizamic',
-          publishedDate: '2020-04-25',
-          level: 'Advance',
-          numOfRates: 4.5,
-          score: 2992,
-          courseLength: '8h20m',
-        },
-      ],
+      courses,
     }
   },
   computed: {

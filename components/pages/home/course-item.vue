@@ -6,21 +6,21 @@
           <icon-video class="icon"></icon-video> COURSE</span
         >
         <span v-if="isPopular" class="popular">POPULAR</span>
-        <span v-if="isNew" class="new">NEW</span>
+        <span v-if="isNew" class="new">NEW!</span>
       </div>
       <div class="author">
         <strong class="name">{{ courseName }}</strong>
         <span class="owner">By {{ courseAuthor }}</span>
       </div>
-      <div class="property">
-        <span>{{ publishedDate }}</span>
-        <span>{{ level }}</span>
-        <span class="flex flex-row justify-start items-center">
+      <ul class="property">
+        <li>{{ publishedDate }}</li>
+        <li class="point">{{ level }}</li>
+        <li class="point flex flex-row justify-start items-center">
           <common-c-vote :vote="vote"></common-c-vote>
           <span>({{ score }})</span>
-        </span>
-        <span>{{ courseLength }}</span>
-      </div>
+        </li>
+        <li class="point">{{ courseLength }}</li>
+      </ul>
     </div>
     <div class="action">
       <button class="button">
@@ -75,10 +75,10 @@ export default {
 
 <style lang="postcss">
 .home-course-item {
-  @apply flex flex-row justify-between items-stretch;
+  @apply flex flex-row justify-between items-stretch flex-wrap;
 }
 .home-course-item > .action > .button {
-  @apply p-2 rounded-full text-gray-400;
+  @apply rounded-full text-gray-400;
 }
 .home-course-item > .action > .button > .icon {
   @apply w-5 h-5;
@@ -104,7 +104,7 @@ export default {
   @apply text-purple-400 border border-purple-400;
 }
 .home-course-item > .info > .status > .new {
-  @apply text-yellow-400 border border-yellow-400;
+  @apply italic text-yellow-400 border border-yellow-400;
 }
 .home-course-item > .info > .author {
   @apply flex flex-col justify-start;
@@ -116,6 +116,13 @@ export default {
   @apply text-xs;
 }
 .home-course-item > .info > .property {
-  @apply text-xs flex flex-row justify-start items-center space-x-2;
+  @apply text-xs flex flex-row justify-start items-center flex-wrap space-x-3;
+}
+.home-course-item > .info > .property > .point {
+  @apply relative pl-3 whitespace-nowrap;
+}
+.home-course-item > .info > .property > .point::before {
+  content: '';
+  @apply w-1 h-1 rounded-full bg-gray-400 absolute left-0 top-1/2 transform -translate-y-1/2;
 }
 </style>

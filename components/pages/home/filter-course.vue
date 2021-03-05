@@ -55,15 +55,15 @@ export default {
 
 <style lang="postcss">
 .filter-courses {
-  @apply flex flex-row justify-start items-center text-sm space-x-1;
+  @apply flex flex-row justify-start items-center flex-wrap text-sm space-x-1;
 }
 .filter-courses > .button {
-  @apply flex flex-row justify-start items-center px-4 py-2 rounded-sm bg-gray-600 text-gray-200 space-x-1;
+  @apply flex flex-row justify-start items-center px-4 py-2 rounded-sm bg-gray-600 text-gray-200 space-x-1 my-1;
 }
 .filter-courses > .button > .icon {
   @apply w-5 h-5;
 }
 .filter-courses > .type {
-  @apply flex-grow sm:flex-grow-0 sm:w-64;
+  @apply flex-grow my-1 sm:flex-grow-0 sm:w-64;
 }
 </style>

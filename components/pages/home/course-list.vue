@@ -6,7 +6,7 @@
     </div>
     <div class="items">
       <div
-        v-for="(course, index) in courses"
+        v-for="(course, index) in filtedCourses"
         :key="index + '_course'"
         class="item"
       >
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import { filterType } from '@/utils/constant'
+import { mapGetters } from 'vuex'
 export default {
   name: 'HomeCourseList',
   data() {
@@ -84,6 +86,37 @@ export default {
         },
       ],
     }
+  },
+  computed: {
+    ...mapGetters({ search: 'search', filter: 'course/filter' }),
+    filtedCourses() {
+      try {
+        let filtedItems = this.filterCourses(this.courses)
+        filtedItems = this.sortCourses(filtedItems)
+        return filtedItems
+      } catch (error) {
+        return []
+      }
+    },
+  },
+  methods: {
+    filterCourses(courses) {
+      return courses.filter(
+        (item) =>
+          item?.courseName.includes(this.search || '') ||
+          item?.authorName.includes(this.search || '')
+      )
+    },
+    sortCourses(courses) {
+      const sortFunc =
+        this.filter?.type === filterType?.POPULARITY
+          ? this.sortByField('publishedDate')
+          : this.sortByField('numOfRates')
+      return courses.sort(sortFunc)
+    },
+    sortByField(fieldName) {
+      return (a, b) => (a[fieldName] > b[fieldName] ? 1 : -1)
+    },
   },
 }
 </script>

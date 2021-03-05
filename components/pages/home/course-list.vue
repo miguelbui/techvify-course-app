@@ -30,7 +30,7 @@ export default {
           isPopular: true,
           isNew: false,
           authorName: 'Samuel Eto',
-          publishedDate: 'Oct 6, 2020',
+          publishedDate: '2020-06-12',
           level: 'Beginner',
           numOfRates: 3.5,
           score: 3587,
@@ -42,7 +42,7 @@ export default {
           isPopular: false,
           isNew: false,
           authorName: 'Romeo Lukaku',
-          publishedDate: 'Jan 11, 2021',
+          publishedDate: '2021-01-11',
           level: 'Beginner',
           numOfRates: 4.5,
           score: 196,
@@ -54,7 +54,7 @@ export default {
           isPopular: true,
           isNew: true,
           authorName: 'Giccwo EtKansaoo',
-          publishedDate: 'Apr 25, 2020',
+          publishedDate: '2020-04-25',
           level: 'Beginner',
           numOfRates: 5.0,
           score: 2101,
@@ -66,7 +66,7 @@ export default {
           isPopular: false,
           isNew: false,
           authorName: 'Tom Ford',
-          publishedDate: 'Sep 20, 2019',
+          publishedDate: '2019-09-14',
           level: 'Middle',
           numOfRates: 4.5,
           score: 1102,
@@ -78,7 +78,7 @@ export default {
           isPopular: true,
           isNew: true,
           authorName: 'Makr Kizamic',
-          publishedDate: 'Apr 20, 2020',
+          publishedDate: '2020-04-25',
           level: 'Advance',
           numOfRates: 4.5,
           score: 2992,
@@ -110,12 +110,20 @@ export default {
     sortCourses(courses) {
       const sortFunc =
         this.filter?.type === filterType?.POPULARITY
-          ? this.sortByField('publishedDate')
-          : this.sortByField('numOfRates')
+          ? this.sortByField('numOfRates')
+          : this.sortByDate('publishedDate')
       return courses.sort(sortFunc)
     },
     sortByField(fieldName) {
-      return (a, b) => (a[fieldName] > b[fieldName] ? 1 : -1)
+      return (a, b) => (a[fieldName] > b[fieldName] ? -1 : 1)
+    },
+    sortByDate(fieldName) {
+      return (a, b) => {
+        return this.$dateFns.compareDesc(
+          new Date(a[fieldName]),
+          new Date(b[fieldName])
+        )
+      }
     },
   },
 }

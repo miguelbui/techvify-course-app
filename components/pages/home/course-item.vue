@@ -55,7 +55,7 @@ export default {
       return this.item?.isNew
     },
     publishedDate() {
-      return this.item?.publishedDate
+      return this.$dateFns.format(this.item?.publishedDate, 'MMM d, yyyy')
     },
     level() {
       return this.item?.level

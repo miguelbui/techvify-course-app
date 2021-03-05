@@ -7,10 +7,13 @@ export const getters = {
   filter(state) {
     return state.filter
   },
+  filterType(state) {
+    return state.filter?.type?.value
+  },
 }
 export const mutations = {
   SET_FILTER(state, { props, payload }) {
-    state.filter[props] = payload
+    state.filter = { ...state.filter, [props]: payload }
   },
 }
 

@@ -19,7 +19,7 @@
 
 <script>
 import { filterType } from '@/utils/constant'
-import { mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 export default {
   data() {
     return {
@@ -28,6 +28,12 @@ export default {
       },
       filterType,
     }
+  },
+  computed: {
+    ...mapGetters({ filterState: 'course/filter' }),
+  },
+  mounted() {
+    this.filter.type = this.filterState?.type
   },
   methods: {
     ...mapActions({ setFilter: 'course/setFilter', setSearch: 'setSearch' }),

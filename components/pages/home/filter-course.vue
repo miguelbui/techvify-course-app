@@ -6,8 +6,8 @@
     </button>
     <common-c-dropdown
       v-model="filter.type"
-      class="w-64"
       :items="filterType"
+      class="type"
       @change="updateTypeFilter"
     ></common-c-dropdown>
     <button class="button" @click="resetFilter">
@@ -55,5 +55,8 @@ export default {
 }
 .filter-courses > .button > .icon {
   @apply w-5 h-5;
+}
+.filter-courses > .type {
+  @apply flex-grow sm:flex-grow-0 sm:w-64;
 }
 </style>

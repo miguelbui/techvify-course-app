@@ -50,7 +50,7 @@ export default {
       return this.filtedCourses?.length || 0
     },
     sortByText() {
-      return this.filterType === filterType.POPULARITY.value
+      return this.filterType === filterType?.POPULARITY?.value
         ? `Sort by most popular`
         : 'Sort by newest'
     },
@@ -65,7 +65,7 @@ export default {
     },
     sortCourses(courses) {
       const sortFunc =
-        this.filterType === filterType.POPULARITY.value
+        this.filterType === filterType?.POPULARITY?.value
           ? this.sortByField('numOfRates')
           : this.sortByDate('publishedDate')
       return courses.sort(sortFunc)
